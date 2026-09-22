@@ -1,0 +1,11 @@
+-- [보너스-미니리포트 KPI1] 월별 대여 건수 추이
+
+$ sqlite> SELECT strftime('%Y-%m', rental_date) AS rental_month, COUNT(*) AS rental_count FROM rental GROUP BY rental_month ORDER BY rental_month;
+rental_month | rental_count
+-------------+-------------
+2026-07      | 3           
+2026-08      | 18          
+2026-09      | 10          
+
+(3 rows)
+

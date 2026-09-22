@@ -1,0 +1,23 @@
+-- [조인] 대여기록+도서+카테고리 3테이블 조인 (INNER JOIN x2, 15건)
+
+$ sqlite> SELECT r.rental_id, b.title, cat.name AS category_name, r.rental_date, r.due_date, r.status FROM rental r INNER JOIN book b ON b.book_id = r.book_id INNER JOIN category cat ON cat.category_id = b.category_id ORDER BY r.rental_id LIMIT 15;
+rental_id | title         | category_name | rental_date | due_date   | status  
+----------+---------------+---------------+-------------+------------+---------
+1         | 느슨하게 산다는 것    | 에세이           | 2026-08-27  | 2026-09-10 | RETURNED
+2         | 세계사를 바꾼 열흘    | 역사            | 2026-09-15  | 2026-09-29 | RETURNED
+3         | 조선의 밤과 낮      | 역사            | 2026-09-08  | 2026-09-22 | RETURNED
+4         | 작은 불빛들        | 소설            | 2026-09-06  | 2026-09-20 | RETURNED
+5         | 우주는 어떻게 시작되었나 | 과학            | 2026-09-14  | 2026-09-28 | RENTED  
+6         | 색으로 말하는 그림    | 예술            | 2026-08-15  | 2026-08-29 | RENTED  
+7         | 우주는 어떻게 시작되었나 | 과학            | 2026-08-27  | 2026-09-10 | RETURNED
+8         | 세계사를 바꾼 열흘    | 역사            | 2026-07-29  | 2026-08-12 | RETURNED
+9         | 세계사를 바꾼 열흘    | 역사            | 2026-09-14  | 2026-09-28 | RETURNED
+10        | 건축, 공간의 언어    | 예술            | 2026-09-10  | 2026-09-24 | RETURNED
+11        | 나를 바꾸는 하루 10분 | 자기계발          | 2026-08-29  | 2026-09-12 | RETURNED
+12        | 바람이 지나간 자리    | 소설            | 2026-08-13  | 2026-08-27 | RETURNED
+13        | 처음 만나는 알고리즘   | IT·프로그래밍      | 2026-08-03  | 2026-08-17 | RETURNED
+14        | 철학이 필요한 순간    | 인문학           | 2026-08-29  | 2026-09-12 | RETURNED
+15        | 돈의 흐름을 읽는 법   | 경제경영          | 2026-09-16  | 2026-09-30 | RETURNED
+
+(15 rows)
+

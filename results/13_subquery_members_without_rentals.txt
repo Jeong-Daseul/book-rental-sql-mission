@@ -1,0 +1,9 @@
+-- [서브쿼리] 대여 기록이 없는 회원 (NOT IN)
+
+$ sqlite> SELECT member_id, name, phone FROM member WHERE member_id NOT IN (SELECT DISTINCT member_id FROM rental);
+member_id | name | phone        
+----------+------+--------------
+13        | 서건우  | 010-2492-6996
+
+(1 rows)
+

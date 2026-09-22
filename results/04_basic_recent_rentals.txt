@@ -1,0 +1,28 @@
+-- [기본조회] 최근 30일 이내 대여 기록을 최신순으로 조회 (WHERE 날짜 + ORDER BY)
+
+$ sqlite> SELECT rental_id, member_id, book_id, rental_date, status FROM rental WHERE rental_date >= date('now', '-30 day') ORDER BY rental_date DESC;
+rental_id | member_id | book_id | rental_date | status  
+----------+-----------+---------+-------------+---------
+15        | 12        | 8       | 2026-09-16  | RETURNED
+2         | 14        | 18      | 2026-09-15  | RETURNED
+5         | 1         | 19      | 2026-09-14  | RENTED  
+9         | 3         | 18      | 2026-09-14  | RETURNED
+27        | 4         | 10      | 2026-09-13  | RENTED  
+10        | 14        | 22      | 2026-09-10  | RETURNED
+3         | 15        | 17      | 2026-09-08  | RETURNED
+32        | 11        | 13      | 2026-09-07  | RETURNED
+4         | 7         | 3       | 2026-09-06  | RETURNED
+24        | 14        | 15      | 2026-09-03  | RENTED  
+23        | 12        | 23      | 2026-09-02  | RETURNED
+20        | 14        | 11      | 2026-08-31  | RETURNED
+25        | 15        | 22      | 2026-08-30  | RETURNED
+11        | 11        | 7       | 2026-08-29  | RETURNED
+14        | 15        | 15      | 2026-08-29  | RETURNED
+1         | 6         | 5       | 2026-08-27  | RETURNED
+7         | 10        | 19      | 2026-08-27  | RETURNED
+18        | 3         | 16      | 2026-08-26  | RETURNED
+31        | 5         | 23      | 2026-08-26  | RENTED  
+29        | 2         | 6       | 2026-08-24  | RETURNED
+
+(20 rows)
+

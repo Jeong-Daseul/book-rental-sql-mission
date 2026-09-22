@@ -1,0 +1,23 @@
+-- [조인] 전체 회원의 대여 건수 (대여 0건 회원도 포함, LEFT JOIN)
+
+$ sqlite> SELECT m.member_id, m.name, COUNT(r.rental_id) AS rental_count FROM member m LEFT JOIN rental r ON r.member_id = m.member_id GROUP BY m.member_id, m.name ORDER BY rental_count ASC;
+member_id | name | rental_count
+----------+------+-------------
+13        | 서건우  | 0           
+4         | 최하윤  | 1           
+9         | 장지호  | 1           
+1         | 김민준  | 2           
+3         | 박도윤  | 2           
+5         | 정시우  | 2           
+6         | 강지우  | 2           
+7         | 조예준  | 2           
+8         | 윤수아  | 2           
+10        | 임윤서  | 2           
+12        | 오다은  | 2           
+2         | 이서연  | 3           
+11        | 한주원  | 3           
+14        | 신서준  | 4           
+15        | 권채원  | 4           
+
+(15 rows)
+

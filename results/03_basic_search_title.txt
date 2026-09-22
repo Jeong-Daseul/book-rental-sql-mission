@@ -1,0 +1,9 @@
+-- [기본조회] 제목에 '사람'이 포함된 도서, 가격 낮은 순 검색 (WHERE LIKE + ORDER BY)
+
+$ sqlite> SELECT title, author, price FROM book WHERE title LIKE '%사람%' ORDER BY price ASC;
+title     | author | price
+----------+--------+------
+오늘도 걷는 사람 | 박서연    | 13500
+
+(1 rows)
+

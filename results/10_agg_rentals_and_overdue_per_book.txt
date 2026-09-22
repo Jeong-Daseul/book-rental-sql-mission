@@ -1,0 +1,18 @@
+-- [집계] 도서별 총 대여횟수/연체 발생횟수, 대여 많은 순 (COUNT+SUM + GROUP BY)
+
+$ sqlite> SELECT b.title, COUNT(r.rental_id) AS total_rentals, SUM(CASE WHEN r.return_date IS NULL AND r.due_date < date('now') THEN 1 ELSE 0 END) AS overdue_count FROM rental r INNER JOIN book b ON b.book_id = r.book_id GROUP BY b.book_id, b.title ORDER BY total_rentals DESC LIMIT 10;
+title         | total_rentals | overdue_count
+--------------+---------------+--------------
+세계사를 바꾼 열흘    | 4             | 1            
+우주는 어떻게 시작되었나 | 3             | 0            
+느슨하게 산다는 것    | 2             | 0            
+아주 작은 습관의 시작  | 2             | 0            
+코드로 배우는 생각의 힘 | 2             | 0            
+클린 소프트웨어 설계   | 2             | 1            
+철학이 필요한 순간    | 2             | 1            
+마음을 읽는 심리학    | 2             | 0            
+건축, 공간의 언어    | 2             | 0            
+용감한 여우와 숲의 비밀 | 2             | 1            
+
+(10 rows)
+

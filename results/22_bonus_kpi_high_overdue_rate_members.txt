@@ -1,0 +1,13 @@
+-- [보너스-미니리포트 KPI3] 연체율이 높은 회원 목록
+
+$ sqlite> SELECT m.name, COUNT(r.rental_id) AS total_rentals, SUM(CASE WHEN r.return_date IS NULL AND r.due_date < date('now') THEN 1 ELSE 0 END) AS overdue_rentals, ROUND(100.0 * SUM(CASE WHEN r.return_date IS NULL AND r.due_date < date('now') THEN 1 ELSE 0 END) / COUNT(r.rental_id), 1) AS overdue_rate_pct FROM member m INNER JOIN rental r ON r.member_id = m.member_id GROUP BY m.member_id, m.name HAVING overdue_rentals > 0 ORDER BY overdue_rate_pct DESC;
+name | total_rentals | overdue_rentals | overdue_rate_pct
+-----+---------------+-----------------+-----------------
+정시우  | 2             | 1               | 50.0            
+조예준  | 2             | 1               | 50.0            
+한주원  | 2             | 1               | 50.0            
+이서연  | 3             | 1               | 33.3            
+신서준  | 4             | 1               | 25.0            
+
+(5 rows)
+

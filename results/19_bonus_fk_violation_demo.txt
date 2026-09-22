@@ -1,0 +1,5 @@
+-- [보너스-정합성] 존재하지 않는 category_id=999 참조 INSERT 시도 -> FK 위반으로 실패해야 정상
+
+$ sqlite> INSERT INTO book (category_id, title, author, isbn, price) VALUES (999, '존재하지않는분류 도서', '익명', '979-11-0000-000-0', 10000);
+[ERROR] IntegrityError: FOREIGN KEY constraint failed
+

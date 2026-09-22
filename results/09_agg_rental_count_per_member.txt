@@ -1,0 +1,22 @@
+-- [집계] 회원별 대여 횟수 집계 (COUNT + GROUP BY)
+
+$ sqlite> SELECT m.name, COUNT(r.rental_id) AS rental_count FROM member m INNER JOIN rental r ON r.member_id = m.member_id GROUP BY m.member_id, m.name ORDER BY rental_count DESC;
+name | rental_count
+-----+-------------
+신서준  | 4           
+권채원  | 4           
+이서연  | 3           
+한주원  | 3           
+김민준  | 2           
+박도윤  | 2           
+정시우  | 2           
+강지우  | 2           
+조예준  | 2           
+윤수아  | 2           
+임윤서  | 2           
+오다은  | 2           
+최하윤  | 1           
+장지호  | 1           
+
+(14 rows)
+

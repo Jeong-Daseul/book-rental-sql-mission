@@ -1,0 +1,24 @@
+# 쿼리 실행 결과 목록
+
+- `01_basic_top5_expensive_book.txt` : [기본조회] 정가 15000원 이상 도서, 가격 높은 순 상위 5개 (WHERE+ORDER BY+LIMIT)
+- `02_basic_currently_rented.txt` : [기본조회] 현재 대여 중(미반납)인 책 목록 (WHERE)
+- `03_basic_search_title.txt` : [기본조회] 제목에 '사람'이 포함된 도서, 가격 낮은 순 검색 (WHERE LIKE + ORDER BY)
+- `04_basic_recent_rentals.txt` : [기본조회] 최근 30일 이내 대여 기록을 최신순으로 조회 (WHERE 날짜 + ORDER BY)
+- `05_join_rental_with_member.txt` : [조인] 대여기록 + 회원 이름 (INNER JOIN, 최신 10건)
+- `06_join_rental_detail_3tables.txt` : [조인] 대여기록+도서+카테고리 3테이블 조인 (INNER JOIN x2, 15건)
+- `07_join_book_by_category.txt` : [조인] 카테고리별 도서 목록 (INNER JOIN)
+- `08_leftjoin_rental_count_per_member.txt` : [조인] 전체 회원의 대여 건수 (대여 0건 회원도 포함, LEFT JOIN)
+- `09_agg_rental_count_per_member.txt` : [집계] 회원별 대여 횟수 집계 (COUNT + GROUP BY)
+- `10_agg_rentals_and_overdue_per_book.txt` : [집계] 도서별 총 대여횟수/연체 발생횟수, 대여 많은 순 (COUNT+SUM + GROUP BY)
+- `11_agg_avg_price_per_category.txt` : [집계] 카테고리별 평균 도서 정가 (AVG + GROUP BY)
+- `12_subquery_above_average_price.txt` : [서브쿼리] 전체 평균가보다 비싼 도서
+- `13_subquery_members_without_rentals.txt` : [서브쿼리] 대여 기록이 없는 회원 (NOT IN)
+- `14_update_mark_overdue.txt` : [수정] 기한이 지났는데 미반납인 대여 건을 OVERDUE로 일괄 업데이트 후 상태별 건수 확인
+- `15_delete_rental_record.txt` : [삭제] 불필요한 대여 기록(rental_id=32) 삭제 후 사라졌는지 확인
+- `16_index_rental_member_book.txt` : [인덱스] rental(member_id), rental(book_id) 인덱스 생성 후 sqlite_master로 확인 - 회원/도서별 조회·조인이 잦아 FK 컬럼에 인덱스 필요
+- `17_bonus_join_vs_subquery_A_join.txt` : [보너스-비교 A] 대여된 적 있는 도서 목록을 JOIN+DISTINCT로 조회
+- `18_bonus_join_vs_subquery_B_subquery.txt` : [보너스-비교 B] 같은 결과를 서브쿼리(IN)로 조회 - A와 결과 동일함을 비교
+- `19_bonus_fk_violation_demo.txt` : [보너스-정합성] 존재하지 않는 category_id=999 참조 INSERT 시도 -> FK 위반으로 실패해야 정상
+- `20_bonus_kpi_monthly_rentals.txt` : [보너스-미니리포트 KPI1] 월별 대여 건수 추이
+- `21_bonus_kpi_top10_book.txt` : [보너스-미니리포트 KPI2] 대여 횟수 기준 인기 도서 TOP10
+- `22_bonus_kpi_high_overdue_rate_members.txt` : [보너스-미니리포트 KPI3] 연체율이 높은 회원 목록

@@ -1,0 +1,13 @@
+-- [기본조회] 정가 15000원 이상 도서, 가격 높은 순 상위 5개 (WHERE+ORDER BY+LIMIT)
+
+$ sqlite> SELECT title, author, price FROM book WHERE price >= 15000 ORDER BY price DESC LIMIT 5;
+title         | author | price
+--------------+--------+------
+클린 소프트웨어 설계   | 신동혁    | 25000
+건축, 공간의 언어    | 장미래    | 24500
+색으로 말하는 그림    | 윤소림    | 23000
+코드로 배우는 생각의 힘 | 오태윤    | 22000
+데이터로 세상 읽기    | 서민경    | 21000
+
+(5 rows)
+

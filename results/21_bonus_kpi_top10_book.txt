@@ -1,0 +1,18 @@
+-- [보너스-미니리포트 KPI2] 대여 횟수 기준 인기 도서 TOP10
+
+$ sqlite> SELECT b.title, COUNT(r.rental_id) AS rental_count FROM rental r INNER JOIN book b ON b.book_id = r.book_id GROUP BY b.book_id, b.title ORDER BY rental_count DESC LIMIT 10;
+title         | rental_count
+--------------+-------------
+세계사를 바꾼 열흘    | 4           
+우주는 어떻게 시작되었나 | 3           
+느슨하게 산다는 것    | 2           
+아주 작은 습관의 시작  | 2           
+코드로 배우는 생각의 힘 | 2           
+철학이 필요한 순간    | 2           
+마음을 읽는 심리학    | 2           
+건축, 공간의 언어    | 2           
+용감한 여우와 숲의 비밀 | 2           
+바람이 지나간 자리    | 1           
+
+(10 rows)
+

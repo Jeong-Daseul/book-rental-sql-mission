@@ -1,0 +1,18 @@
+-- [인덱스] rental(member_id), rental(book_id) 인덱스 생성 후 sqlite_master로 확인 - 회원/도서별 조회·조인이 잦아 FK 컬럼에 인덱스 필요
+
+$ sqlite> CREATE INDEX IF NOT EXISTS idx_rental_member_id ON rental(member_id);
+(영향받은 행 수: -1)
+
+
+$ sqlite> CREATE INDEX IF NOT EXISTS idx_rental_book_id ON rental(book_id);
+(영향받은 행 수: -1)
+
+
+$ sqlite> SELECT name, tbl_name, sql FROM sqlite_master WHERE type = 'index' AND name LIKE 'idx_%';
+name                 | tbl_name | sql                                                   
+---------------------+----------+-------------------------------------------------------
+idx_rental_member_id | rental   | CREATE INDEX idx_rental_member_id ON rental(member_id)
+idx_rental_book_id   | rental   | CREATE INDEX idx_rental_book_id ON rental(book_id)    
+
+(2 rows)
+
